@@ -119,7 +119,7 @@
 
 .discover-button {
   margin: 0px;
-  margin-top: 10px;
+  margin-top: 20px;
   box-shadow: none;
   border: 0;
   border-radius: 5px;
@@ -127,11 +127,6 @@
   width: 110px;
   cursor: pointer;
 }
-
-.discover:active {
-  border: 5px white;
-}
-
 
 .ban {
   background-color: #242424b0;

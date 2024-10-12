@@ -12,6 +12,7 @@ function App() {
   const [sprite, setSprite] = useState ('');
   const [location, setLocation] = useState ('');
   const [discoverList, setList] = useState ([]);
+  const [bannedList, setBanned] = useState([])
   const [pokemonIndex, setIndex] = useState (0);
 
   // use the effect hook in order to fetch data from the Pokemon API
@@ -55,16 +56,38 @@ function App() {
     setList([...discoverList, [sprite, pokemon]]);
   };
 
+
+  // adds a type to the banned list so it can be excluded when looking for new pokemon
+  // also do not want duplicates
   const banType = () => {
-
+    if (!bannedList.some(item => item[0] === types && item[1] === 'type')) {
+      setBanned([...bannedList, [types, 'type']]);
+    }
   };
 
+  // adds an ability to the banned list so it can be excluded when looking for new pokemon
+  // also do not want duplicates
   const banAbility = () => {
-
+    if (!bannedList.some(item => item[0] === ability && item[1] === 'ability')) {
+      setBanned([...bannedList, [ability, 'ability']]);
+    }
   };
 
+  // adds a location to the banned list so it can be excluded when looking for new pokemon
+  // also do not want duplicates
   const banLocation = () => {
+    if (!bannedList.some(item => item[0] === location && item[1] === 'location')) {
+      setBanned([...bannedList, [location, 'location']]);
+    }
+  };
 
+  const removeBannedType = () => {
+    // Find the index of the arrayToRemove
+    const index = arrayOfArrays.findIndex(array => JSON.stringify(array) === JSON.stringify([arrayToRemove]));
+
+    if (index !== -1) {
+      arrayOfArrays.splice(index, 1); // Remove the array if it exists
+    }
   };
 
   return (
@@ -97,15 +120,14 @@ function App() {
             ⠀⠀⠀⠀⢿⡗⠛⠋⠀⠀⠀⠀⣾⠋⠀⢱⠀⠀⠀⠘⠲⠗⠋⠀⠈⣿⠀⠀⠀⠀
             ⠀⠀⠀⠀⠘⢷⡀⠀⠀⠀⠀⠀⠈⠓⠒⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡇⠀⠀⠀
             ⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣧⠀⠀⠀
-            ⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀
             </h3>
           ) : (
             <div className='pokemon'>
               <h2 className='pokemon-name'>{pokemon}</h2>
               <div className='buttons'>
-                <button className='type'>{types}</button>
-                <button className='ability'>{ability}</button>
-                <button className='location'>{location}</button>
+                <button className='type' onClick={banType}>{types}</button>
+                <button className='ability' onClick={banAbility}>{ability}</button>
+                <button className='location' onClick={banLocation}>{location}</button>
               </div>
               <img className='pokemon-image' src={sprite}/>
             </div>
@@ -115,6 +137,13 @@ function App() {
       
       <div className='ban'>
         <h2 className='ban-header'>Ban List</h2>
+        <div>
+          {bannedList.map((bannedItem, index) => (
+            <div key={index} className="dynamic-component">
+              <button className={bannedItem[1]}>{bannedItem[0]}</button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

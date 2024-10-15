@@ -27,7 +27,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-[Video Walkthrough](https://i.imgur.com/DVtWaf4.gif)
+![Video Walkthrough](https://submissions.us-east-1.linodeobjects.com/web102/aYYB3yCR.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with [ScreenToGif](https://www.screentogif.com/)

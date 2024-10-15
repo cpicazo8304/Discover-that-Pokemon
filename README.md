@@ -29,6 +29,8 @@ Here's a walkthrough of implemented user stories:
 
 ![Walkthrough gif](https://i.imgur.com/DVtWaf4.gif)
 
+<img src="https://i.imgur.com/DVtWaf4.gif" alt="GIF description">
+
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with [ScreenToGif](https://www.screentogif.com/)
 <!-- Recommended tools:
